@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/pokedex/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pokedex</title>
+    <script type='text/javascript'>
+      (function(l) {
+        if (l.search[1] === '/') {
+          const decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function(s) {
+              return s.replace(/~and~/g, '&')
+            })
+            .join('?')
+
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash)
+        }
+      })(window.location)
+    </script>
+    <script type="module" crossorigin src="/pokedex/assets/index-BFY-26S4.js"></script>
+    <link rel="stylesheet" crossorigin href="/pokedex/assets/index-2uZJ4cuy.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
