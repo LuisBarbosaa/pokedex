@@ -5,7 +5,7 @@
 
 ## Link da Aplicacao Online
 
-[Acesse a Pokedex aqui](https://Luisbarbosa.github.io/pokedex/)
+[Acesse a Pokedex aqui](https://LuisBarbosaa.github.io/pokedex/)
 
 ## Descricao
 
@@ -33,7 +33,7 @@ consumindo dados da [PokeAPI](https://pokeapi.co). O usuario pode:
 
 ```bash
 # Clonar o repositorio
-git clone https://github.com/Luisbarbosa/pokedex.git
+git clone https://github.com/LuisBarbosaa/pokedex.git
 
 # Entrar na pasta
 cd pokedex
