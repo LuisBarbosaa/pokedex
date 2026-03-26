@@ -1,0 +1,35 @@
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card img {
+  width: 120px;
+  height: 120px;
+}
+
+.card-id {
+  color: #aaa;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.card-name {
+  text-transform: capitalize;
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+}
