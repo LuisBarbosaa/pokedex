@@ -4,6 +4,51 @@ import Loading from '../components/Loading';
 import { getPokemonDetail } from '../services/api';
 import './PokemonDetail.css';
 
+const TYPE_TRANSLATIONS = {
+  normal: 'Normal',
+  fire: 'Fogo',
+  water: 'Água',
+  electric: 'Elétrico',
+  grass: 'Planta',
+  ice: 'Gelo',
+  fighting: 'Lutador',
+  poison: 'Veneno',
+  ground: 'Terra',
+  flying: 'Voador',
+  psychic: 'Psíquico',
+  bug: 'Inseto',
+  rock: 'Pedra',
+  ghost: 'Fantasma',
+  dragon: 'Dragão',
+  dark: 'Sombrio',
+  steel: 'Aço',
+  fairy: 'Fada',
+};
+
+const STAT_TRANSLATIONS = {
+  hp: 'Vida',
+  attack: 'Ataque',
+  defense: 'Defesa',
+  'special-attack': 'Ataque Esp.',
+  'special-defense': 'Defesa Esp.',
+  speed: 'Velocidade',
+};
+
+function translateTypeName(typeName) {
+  return TYPE_TRANSLATIONS[typeName] || typeName;
+}
+
+function translateStatName(statName) {
+  return STAT_TRANSLATIONS[statName] || statName;
+}
+
+function formatLabel(rawText) {
+  return rawText
+    .split('-')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
 function PokemonDetail() {
   const { name } = useParams();
   const [pokemon, setPokemon] = useState(null);
@@ -16,7 +61,7 @@ function PokemonDetail() {
         const data = await getPokemonDetail(name);
         setPokemon(data);
       } catch {
-        setError('Pokemon nao encontrado.');
+        setError('Pokémon não encontrado.');
       } finally {
         setLoading(false);
       }
@@ -45,7 +90,7 @@ function PokemonDetail() {
         <div className='types'>
           {pokemon.types.map((typeItem) => (
             <span key={typeItem.type.name} className={`type type-${typeItem.type.name}`}>
-              {typeItem.type.name}
+              {translateTypeName(typeItem.type.name)}
             </span>
           ))}
         </div>
@@ -64,15 +109,15 @@ function PokemonDetail() {
         <h3>Habilidades</h3>
         <ul>
           {pokemon.abilities.map((abilityItem) => (
-            <li key={abilityItem.ability.name}>{abilityItem.ability.name}</li>
+            <li key={abilityItem.ability.name}>{formatLabel(abilityItem.ability.name)}</li>
           ))}
         </ul>
 
-        <h3>Status Base</h3>
+        <h3>Atributos Base</h3>
         <div className='stats'>
           {pokemon.stats.map((statItem) => (
             <div key={statItem.stat.name} className='stat-row'>
-              <span className='stat-name'>{statItem.stat.name}</span>
+              <span className='stat-name'>{translateStatName(statItem.stat.name)}</span>
               <div className='stat-bar'>
                 <div className='stat-fill' style={{ width: `${Math.min(statItem.base_stat, 100)}%` }} />
               </div>
